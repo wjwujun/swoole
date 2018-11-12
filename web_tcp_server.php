@@ -52,10 +52,23 @@ class Tcp{
     public function onClose($serv, $fd) {
         echo "Client: Close {$fd}".PHP_EOL;
     }
-
 }
 
 $obj=new Tcp();
 
-
+/*
+ //查看php开启进程
+ [root@localhost demo]# ps aft|grep tcp
+ 9201 pts/12   Sl+    0:00  \_ php web_tcp_server.php
+ 9216 pts/12   S+     0:00      \_ php web_tcp_server.php
+ 9229 pts/12   S+     0:00          \_ php web_tcp_server.php
+ 9230 pts/12   S+     0:00          \_ php web_tcp_server.php
+ 9231 pts/12   S+     0:00          \_ php web_tcp_server.php
+ 9232 pts/12   S+     0:00          \_ php web_tcp_server.php
+ 9233 pts/12   S+     0:00          \_ php web_tcp_server.php
+ 9234 pts/12   S+     0:00          \_ php web_tcp_server.php
+ 9235 pts/12   S+     0:00          \_ php web_tcp_server.php
+ 9236 pts/12   S+     0:00          \_ php web_tcp_server.php
+  414 pts/13   S+     0:00  \_ grep --color=auto tcp
+[root@localhost demo]#*/
 
