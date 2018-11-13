@@ -14,10 +14,11 @@
     //实列化
     websocket.onopen= function (evt) {
         console.log("conected-swoole");
+        websocket.send("hello boy");
     }
 
     websocket.onmessage=function(evt){
-        websocket.send("hello boy");
+
         console.log("ws-server-return-mess:"+evt.data);
     }
     websocket.onclose=function(evt){

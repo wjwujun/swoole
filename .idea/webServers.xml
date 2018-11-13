@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="a620253f-9997-4f3c-a5d6-f9df804dcb0b" name="ee" url="http://122.225.58.118">
+        <fileTransfer host="122.225.58.118" port="666" rootFolder="/root/ws_server/demo" accessType="SFTP" password="dfecdff3df8fdffcdfd0df8bdfc9df9adfc6dffadfd3dfd8df8edfebdfc5dfc4" username="root">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
