@@ -32,24 +32,6 @@ class Tcp{
 
     }
 
-    public function onWorkerStart($serv,$worker_id){
-        // 只有当worker_id为0时才添加定时器,避免重复添加
-        if( $worker_id == 0 ) {
-            $str="异步任务开始执行时间".date("Y-m-d H:i:s");
-            $serv->task($str);
-        }
-    }
-    public  function onTask($serv,$taskId,$workerId,$data){
-        var_dump($data);
-        swoole_timer_tick(1000,function()use($serv,$taskId){
-            echo date("Y-m-d H:i:s").PHP_EOL;
-        });
-
-    }
-
-    public  function onFinish($serv,$taskId,$data){
-        echo "定时任务执行完成".PHP_EOL;
-    }
 
 
     /*
@@ -76,6 +58,31 @@ class Tcp{
     //监听连接关闭事件
     public function onClose($serv, $fd) {
         echo "Client: Close {$fd}".PHP_EOL;
+    }
+
+
+
+    /*work启动时候*/
+    public function onWorkerStart($serv,$worker_id){
+        // 只有当worker_id为0时才添加定时器,避免重复添加
+        if( $worker_id == 0 ) {
+            $str="异步任务开始执行时间".date("Y-m-d H:i:s");
+            $serv->task($str);
+        }
+    }
+
+    /*异步任务*/
+    public  function onTask($serv,$taskId,$workerId,$data){
+        var_dump($data);
+        swoole_timer_tick(1000,function()use($serv,$taskId){
+            echo date("Y-m-d H:i:s").PHP_EOL;
+        });
+    }
+
+
+    /*异步任务完成时候*/
+    public  function onFinish($serv,$taskId,$data){
+        echo "定时任务执行完成".PHP_EOL;
     }
 }
 $obj=new Tcp();
