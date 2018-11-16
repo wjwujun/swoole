@@ -7,7 +7,6 @@
     {
         echo "connect success!".PHP_EOL;
         var_dump($result);
-
         //设置
         $redisClient->set("aa",time(),function(swoole_redis $redisClient,$result){
             var_dump($result);
