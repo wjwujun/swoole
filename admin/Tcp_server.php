@@ -1,5 +1,5 @@
 <?php
-
+require_once "function.php";
 
 
 class Tcp{
@@ -50,12 +50,9 @@ class Tcp{
     public function onConnect($serv, $fd,$reactor_id)
     {
         $redis=$this->getRedis();
-
         //获取ip,存入集合
-        $udp_client = $serv->connection_info($fd, $reactor_id);
-        $redis->sAdd('ip',$udp_client['remote_ip']);
-
-
+        /*$udp_client = $serv->connection_info($fd, $reactor_id);
+        $redis->sAdd('ip',$udp_client['remote_ip']);*/
 
         echo "TCP  Client_id:{$fd}  threed_id:{$reactor_id}".PHP_EOL;
     }
@@ -67,8 +64,16 @@ class Tcp{
      *$from_id就是 线程id，$reactor_id
      * */
     public function onReceive($serv, $fd, $from_id, $data) {
+
         $mes=json_decode($data,true);
+        $udp_client = $serv->connection_info($fd, $from_id);
+
         $mes['last_time']=date("Y-m-d H:i:s");
+        $mes['fd']=$fd;
+        $re=reload($mes);
+        if($re){        //重启
+            $serv->send($fd,json_encode($mes['routeruuid']));
+        }
         //将路由器的传入的数据存入redis。
         $redis=$this->getRedis();
         $redis->zAdd('fd',time(),$mes['routeruuid']);  //获取请求fd存入有序集合
@@ -107,6 +112,11 @@ class Tcp{
         echo "定时任务执行完成".PHP_EOL;
     }
 }
+
+
 $obj=new Tcp();
+
+
+
 
 
