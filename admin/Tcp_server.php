@@ -68,12 +68,11 @@ class Tcp{
      * */
     public function onReceive($serv, $fd, $from_id, $data) {
         $mes=json_decode($data,true);
-        $mes['fd']=$fd;
+        $mes['last_time']=date("Y-m-d H:i:s");
         //将路由器的传入的数据存入redis。
-
         $redis=$this->getRedis();
-        $redis->zAdd('fd',time(),$fd);  //获取请求fd存入有序集合
-        $redis->hSet('info',$fd,json_encode($mes)); //将详细信息存入haset
+        $redis->zAdd('fd',time(),$mes['routeruuid']);  //获取请求fd存入有序集合
+        $redis->hSet('info',$mes['routeruuid'],json_encode($mes)); //将详细信息存入haset
 
 
         $serv->send($fd, "Server: ".$data);
@@ -81,9 +80,6 @@ class Tcp{
 
     //监听连接关闭事件
     public function onClose($serv, $fd) {
-        //关闭连接的时候删除fd和相关矿池信息
-        $redis=$this->getRedis();
-        $redis->zRem('fd',$fd);
         echo "Client: Close {$fd}".PHP_EOL;
     }
 
@@ -105,7 +101,6 @@ class Tcp{
             echo date("Y-m-d H:i:s").PHP_EOL;
         });*/
     }
-
 
     /*异步任务完成时候*/
     public  function onFinish($serv,$taskId,$data){
