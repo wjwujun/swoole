@@ -1,5 +1,7 @@
 <?php
 
+
+
 class Tcp{
 
 
@@ -32,7 +34,13 @@ class Tcp{
 
     }
 
-
+    /*获取redis实列*/
+    public function getRedis(){
+        $redis = new Redis();
+        $redis->connect('127.0.0.1', 6379);
+        $redis->auth('U#rNFRkk3vuCKcZ5');
+        return  $redis;
+    }
 
     /*
      * 监听连接进入事件
@@ -41,8 +49,15 @@ class Tcp{
      * */
     public function onConnect($serv, $fd,$reactor_id)
     {
-        echo "TCP  Client_id:{$fd}  threed_id:{$reactor_id}".PHP_EOL;
+        $redis=$this->getRedis();
 
+        //获取ip,存入集合
+        $udp_client = $serv->connection_info($fd, $reactor_id);
+        $redis->sAdd('ip',$udp_client['remote_ip']);
+
+
+
+        echo "TCP  Client_id:{$fd}  threed_id:{$reactor_id}".PHP_EOL;
     }
 
 
@@ -52,11 +67,23 @@ class Tcp{
      *$from_id就是 线程id，$reactor_id
      * */
     public function onReceive($serv, $fd, $from_id, $data) {
-         $serv->send($fd, "Server: ".$data);
+        $mes=json_decode($data,true);
+        $mes['fd']=$fd;
+        //将路由器的传入的数据存入redis。
+
+        $redis=$this->getRedis();
+        $redis->zAdd('fd',time(),$fd);  //获取请求fd存入有序集合
+        $redis->hSet('info',$fd,json_encode($mes)); //将详细信息存入haset
+
+
+        $serv->send($fd, "Server: ".$data);
     }
 
     //监听连接关闭事件
     public function onClose($serv, $fd) {
+        //关闭连接的时候删除fd和相关矿池信息
+        $redis=$this->getRedis();
+        $redis->zRem('fd',$fd);
         echo "Client: Close {$fd}".PHP_EOL;
     }
 
@@ -74,9 +101,9 @@ class Tcp{
     /*异步任务*/
     public  function onTask($serv,$taskId,$workerId,$data){
         var_dump($data);
-        swoole_timer_tick(1000,function()use($serv,$taskId){
+        /*swoole_timer_tick(1000,function()use($serv,$taskId){
             echo date("Y-m-d H:i:s").PHP_EOL;
-        });
+        });*/
     }
 
 
@@ -86,3 +113,5 @@ class Tcp{
     }
 }
 $obj=new Tcp();
+
+
