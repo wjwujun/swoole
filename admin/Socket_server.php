@@ -59,8 +59,9 @@ class Ws {
     /*
      *监听消息事件
      * */
-    function onMessage($ws,$frame){
+    function onMessage($ws,$frame,$data){
         echo "server push message: ".$frame->data.PHP_EOL;
+
 
         $ws->push($frame->fd,"server push");
 

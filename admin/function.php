@@ -49,6 +49,35 @@ function reload($mes){
     }
     return false;
 }
+/*aes加密*/
+function encrypt($data){
+    return openssl_encrypt($data, 'AES-128-ECB', 'rNFRkk3vuCKcZ5', 0, '');
+}
+
+/*aes解密*/
+function decrypt($data){
+    return openssl_encrypt($data, 'AES-128-ECB', 'rNFRkk3vuCKcZ5', 0, '');
+}
 
 
+/*数据库查询*/
+function getMysql(){
+    // 数据库服务器地址
+    $strDbHost = '122.225.58.124';
+    // 数据库用户
+    $strDbUser = 'sa';
+    // 数据库密码
+    $strDbPass = 'AUX_gehua@123P@ssw0rd2017';
+    // 数据库名称
+    $strDbName = 'RouterApp';
+    // 连接数据库的字符串定义
+    $strDsn = "sqlsrv:Server=$strDbHost;Database=$strDbName;";
+    // 生成pdo对象
+    $objDB = new PDO($strDsn, $strDbUser, $strDbPass);
+    //SYS_URLMac 路由表
+    //UP_Batch   批次
+    foreach ($objDB->query('SELECT * FROM dbo.UP_Batch') as $row) {
+        var_dump($row);
+    }
+}
 

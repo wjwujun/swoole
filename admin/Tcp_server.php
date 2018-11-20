@@ -1,7 +1,6 @@
 <?php
 require_once "function.php";
-
-
+use Aes\Aes;
 class Tcp{
 
 
@@ -66,7 +65,7 @@ class Tcp{
     public function onReceive($serv, $fd, $from_id, $data) {
 
         $mes=json_decode($data,true);
-        $udp_client = $serv->connection_info($fd, $from_id);
+        /*$udp_client = $serv->connection_info($fd, $from_id);*/
 
         $mes['last_time']=date("Y-m-d H:i:s");
         $mes['fd']=$fd;
@@ -75,12 +74,16 @@ class Tcp{
             $serv->send($fd,json_encode($mes['routeruuid']));
         }
         //将路由器的传入的数据存入redis。
-        $redis=$this->getRedis();
+        /*$redis=$this->getRedis();
         $redis->zAdd('fd',time(),$mes['routeruuid']);  //获取请求fd存入有序集合
         $redis->hSet('info',$mes['routeruuid'],json_encode($mes)); //将详细信息存入haset
+        $redis->hSet('update',$mes['routeruuid'],json_encode($mes)); //将修改信息存入haset
+        $redis->close();*/
 
+        //aes加密
+        $re=encrypt($data);
 
-        $serv->send($fd, "Server: ".$data);
+        $serv->send($fd,'server:'.$data);
     }
 
     //监听连接关闭事件
@@ -101,10 +104,17 @@ class Tcp{
 
     /*异步任务*/
     public  function onTask($serv,$taskId,$workerId,$data){
-        var_dump($data);
-        /*swoole_timer_tick(1000,function()use($serv,$taskId){
-            echo date("Y-m-d H:i:s").PHP_EOL;
-        });*/
+        swoole_timer_tick(1000,function()use($serv,$taskId){
+         /*   $data=[];
+            $encrypt=new Aes();
+            $re=$encrypt->encrypt($data);   //  加密
+            //$aa=$encrypt->decrypt($re);     // 解密
+            .json_encode($re)
+         */
+        /*
+            echo date("Y-m-d H:i:s").PHP_EOL;*/
+
+        });
     }
 
     /*异步任务完成时候*/
