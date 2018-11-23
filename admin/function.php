@@ -39,7 +39,7 @@ $msg=[
 ];*/
 
 /*异常信息重启*/
-function reload($mes){
+function restart($mes){
     if($mes['poolsta']['fan']>4000)return true;
     if($mes['poolsta']['pll']<500||$mes['poolsta']['pll']>700)return true;
     if($mes['poolsta']['core'][0]=='close'||$mes['poolsta']['core'][1]=='close') return true;
@@ -51,7 +51,15 @@ function reload($mes){
 }
 /*aes加密*/
 function encrypt($data){
-    return openssl_encrypt($data, 'AES-128-ECB', 'rNFRkk3vuCKcZgt5', 1, '');
+    //机密后字符串
+    $str=openssl_encrypt($data, 'AES-128-ECB', 'rNFRkk3vuCKcZgt5', 1, '');
+
+    //拼接5位数
+    $zero='';
+    for($i=0;$i<(5-strlen(strlen($data)));$i++){
+        $zero=$zero.'0';
+    }
+    return  $zero.strlen($data).$str;
 }
 
 /*aes解密*/
@@ -81,10 +89,11 @@ function getMysql(){
 }
 
 
-/*重启数据结构*/
-function returnDate($uuid,$reload=0,$restart=0,$data=[]){
+/*返回数据结构*/
+function returnData($uuid,$fd,$reload=0,$restart=1,$data=[]){
     $data=[
         "uuid"=>$uuid,
+        "fd"=>$fd,
         "reload"=>$reload,  //机器重启,0是重启，1是不重启
         "restart"=>$restart,  //程序重启,0是重启，1是不重启
         "data"=>$data,

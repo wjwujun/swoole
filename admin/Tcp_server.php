@@ -69,9 +69,8 @@ class Tcp{
 
         $mes['last_time']=date("Y-m-d H:i:s");
         $mes['fd']=$fd;
-        $re=reload($mes);
-        if($re){        //重启
-            $serv->send($fd,json_encode($mes['routeruuid']));
+        if(restart($mes)){        //重启
+            $serv->send($fd,returnData($mes['routeruuid']));
         }
         //将路由器的传入的数据存入redis。
         /*
@@ -85,17 +84,22 @@ class Tcp{
         $redis->hSet('update',$mes['routeruuid'],json_encode($mes)); //将修改信息存入haset
         $redis->close();
         */
-
+        $redis=$this->getRedis();
+        $error=[
+        ];
+        $re=returnData("f8d325e43655dc1b56ec88d1f7b87cf1,",1,0,1,$error);
+        $redis->hSet('update',"f8d325e43655dc1b56ec88d1f7b87cf1",$re);
+        $redis->close();
 
 
         //aes加密
         $re=encrypt($data);
-        var_dump($data);
+/*        var_dump($data);
         var_dump(strlen($re));
-        var_dump('---------------------------');
+        var_dump('---------------------------');*/
 
 
-        $serv->send($fd,$re);
+//        $serv->send($fd,$re);
 
 
     }
@@ -118,15 +122,21 @@ class Tcp{
 
     /*异步任务*/
     public  function onTask($serv,$taskId,$workerId,$data){
-        swoole_timer_tick(1000,function()use($serv,$taskId){
-         /*   $data=[];
-            $encrypt=new Aes();
-            $re=$encrypt->encrypt($data);   //  加密
-            //$aa=$encrypt->decrypt($re);     // 解密
-            .json_encode($re)
-         */
-        /*echo date("Y-m-d H:i:s").PHP_EOL;*/
+        swoole_timer_tick(5000,function()use($serv,$taskId){
+            $redis=$this->getRedis();
 
+            //$data=$redis->hGet('update','f8d325e43655dc1b56ec88d1f7b87cf2');
+            //获取所有
+            $data=$redis->hVals('update');
+
+            if($data!=false){
+                foreach($data as $v){
+                    $fd=json_decode($v,true);
+                    $re=$serv->send($fd['fd'],encrypt($v));
+
+                }
+            }
+            $redis->close();
         });
     }
 
