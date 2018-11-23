@@ -31,23 +31,7 @@ class Ws {
     function onOpen($ws,$request){
 
         var_dump("websocket connect success:".$request->fd).PHP_EOL;
-        $re=getRedis();
-     /*   $re->set('key',1);
-        $aa=$re->get('key');*/
-        $arr=[
-            'a'=>1,
-            'b'=>2,
-            'c'=>3
-        ];
-        $arr2=[
-            'd'=>1,
-            'e'=>2,
-            'f'=>3
-        ];
-        $re->set('3',json_encode($arr));
-        $re->set('4',json_encode($arr2));
-        var_dump($re->get(3));
-        var_dump($re->get(2));
+
 
 
 
@@ -62,6 +46,17 @@ class Ws {
     function onMessage($ws,$frame,$data){
         echo "server push message: ".$frame->data.PHP_EOL;
 
+   /*     $redis=$this->getRedis();
+        $error=[
+            "uuid"=>"f8d325e43655dc1b56ec88d1f7b87cf2",
+            "pll"=>"650",
+            "fan"=>"3500",
+            "reload"=>0  //0是重启，1是不重启
+        ];
+
+        $redis->hSet('update',"f8d325e43655dc1b56ec88d1f7b87cf2",json_encode($error));
+        $redis->close();
+*/
 
         $ws->push($frame->fd,"server push");
 

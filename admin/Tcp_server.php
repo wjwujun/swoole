@@ -74,16 +74,30 @@ class Tcp{
             $serv->send($fd,json_encode($mes['routeruuid']));
         }
         //将路由器的传入的数据存入redis。
-        /*$redis=$this->getRedis();
+        /*
+        $redis=$this->getRedis();
         $redis->zAdd('fd',time(),$mes['routeruuid']);  //获取请求fd存入有序集合
+                获取信息 zrange key 0 10
+                返回集合中元素个数  zrange zset1 0 -1
         $redis->hSet('info',$mes['routeruuid'],json_encode($mes)); //将详细信息存入haset
+                获取所有key  hkeys info
+                  获取单个信心  hget info key
         $redis->hSet('update',$mes['routeruuid'],json_encode($mes)); //将修改信息存入haset
-        $redis->close();*/
+        $redis->close();
+        */
+
+
 
         //aes加密
         $re=encrypt($data);
+        var_dump($data);
+        var_dump(strlen($re));
+        var_dump('---------------------------');
 
-        $serv->send($fd,'server:'.$data);
+
+        $serv->send($fd,$re);
+
+
     }
 
     //监听连接关闭事件
@@ -111,8 +125,7 @@ class Tcp{
             //$aa=$encrypt->decrypt($re);     // 解密
             .json_encode($re)
          */
-        /*
-            echo date("Y-m-d H:i:s").PHP_EOL;*/
+        /*echo date("Y-m-d H:i:s").PHP_EOL;*/
 
         });
     }

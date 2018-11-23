@@ -51,14 +51,13 @@ function reload($mes){
 }
 /*aes加密*/
 function encrypt($data){
-    return openssl_encrypt($data, 'AES-128-ECB', 'rNFRkk3vuCKcZ5', 0, '');
+    return openssl_encrypt($data, 'AES-128-ECB', 'rNFRkk3vuCKcZgt5', 1, '');
 }
 
 /*aes解密*/
 function decrypt($data){
-    return openssl_encrypt($data, 'AES-128-ECB', 'rNFRkk3vuCKcZ5', 0, '');
+    return openssl_decrypt($data, 'AES-128-ECB', 'rNFRkk3vuCKcZgt5', 1, '');
 }
-
 
 /*数据库查询*/
 function getMysql(){
@@ -80,4 +79,20 @@ function getMysql(){
         var_dump($row);
     }
 }
+
+
+/*重启数据结构*/
+function returnDate($uuid,$reload=0,$restart=0,$data=[]){
+    $data=[
+        "uuid"=>$uuid,
+        "reload"=>$reload,  //机器重启,0是重启，1是不重启
+        "restart"=>$restart,  //程序重启,0是重启，1是不重启
+        "data"=>$data,
+    ];
+
+    return json_encode($data);
+}
+
+
+
 
