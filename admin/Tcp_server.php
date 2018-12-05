@@ -36,7 +36,7 @@ class Tcp{
     /*获取redis实列*/
     public function getRedis(){
         $redis = new Redis();
-        $redis->connect('127.0.0.1', 6379);
+        $redis->connect('122.225.58.118', 6379);
         $redis->auth('U#rNFRkk3vuCKcZ5');
         return  $redis;
     }
@@ -48,10 +48,11 @@ class Tcp{
      * */
     public function onConnect($serv, $fd,$reactor_id)
     {
-        $redis=$this->getRedis();
+
         //获取ip,存入集合
-        /*$udp_client = $serv->connection_info($fd, $reactor_id);
-        $redis->sAdd('ip',$udp_client['remote_ip']);*/
+        $redis=$this->getRedis();
+        $udp_client = $serv->connection_info($fd, $reactor_id);
+        $redis->sAdd('ip',$udp_client['remote_ip']);
 
         echo "TCP  Client_id:{$fd}  threed_id:{$reactor_id}".PHP_EOL;
     }
@@ -63,49 +64,49 @@ class Tcp{
      *$from_id就是 线程id，$reactor_id
      * */
     public function onReceive($serv, $fd, $from_id, $data) {
-
+        $redis=$this->getRedis();
         $mes=json_decode($data,true);
-        /*$udp_client = $serv->connection_info($fd, $from_id);*/
-
-        $mes['last_time']=date("Y-m-d H:i:s");
-        $mes['fd']=$fd;
-        if(restart($mes)){        //重启
-            $serv->send($fd,returnData($mes['routeruuid']));
+        //查看路由是否正常，不正常重启
+        if(restart($mes)){
+            //aes加密
+            $aa=returnData($mes,0,1);
+            $serv->send($fd,encrypt($aa));
         }
+        //判断是否重启成功
+        $old_data=json_decode($redis->hGet("info",$mes['routeruuid']),true);
+        if(isset($old_data)) {
+            if (restartStatus($old_data)) {
+                $aa = returnData($old_data, 0, 1);
+                $serv->send($fd, encrypt($aa));
+            }
+        }
+        //判断是否修改成功
+        $update_data=json_decode($redis->hGet("edit",$mes['routeruuid']),true);
+
+        if(isset($update_data)){
+            if(updateStatus($update_data,$mes)){
+                $aa=returnData($update_data,0,0);
+                $serv->send($fd,encrypt($aa));
+            }
+        }
+        $mes['last_time']=date("Y-m-d H:i:s");
+        $mes['last_unix_time']=time();
+        $mes['fd']=$fd;
+        $mes['deal_with']=0;
+
         //将路由器的传入的数据存入redis。
-        /*
-        $redis=$this->getRedis();
         $redis->zAdd('fd',time(),$mes['routeruuid']);  //获取请求fd存入有序集合
-                获取信息 zrange key 0 10
-                返回集合中元素个数  zrange zset1 0 -1
         $redis->hSet('info',$mes['routeruuid'],json_encode($mes)); //将详细信息存入haset
-                获取所有key  hkeys info
-                  获取单个信心  hget info key
-        $redis->hSet('update',$mes['routeruuid'],json_encode($mes)); //将修改信息存入haset
-        $redis->close();
-        */
-        $redis=$this->getRedis();
-        $error=[
-        ];
-        $re=returnData("f8d325e43655dc1b56ec88d1f7b87cf1,",1,0,1,$error);
-        $redis->hSet('update',"f8d325e43655dc1b56ec88d1f7b87cf1",$re);
         $redis->close();
 
-
-        //aes加密
-        $re=encrypt($data);
-/*        var_dump($data);
-        var_dump(strlen($re));
-        var_dump('---------------------------');*/
-
-
-//        $serv->send($fd,$re);
-
-
+        //$serv->send($fd,$data);
     }
 
     //监听连接关闭事件
     public function onClose($serv, $fd) {
+        $redis=$this->getRedis();
+        $redis->sRem('fd',$fd);
+        $redis->close();
         echo "Client: Close {$fd}".PHP_EOL;
     }
 
@@ -122,23 +123,61 @@ class Tcp{
 
     /*异步任务*/
     public  function onTask($serv,$taskId,$workerId,$data){
-        swoole_timer_tick(5000,function()use($serv,$taskId){
+        swoole_timer_tick(10000,function()use($serv,$taskId){
             $redis=$this->getRedis();
+            $info=$redis->sMembers("restart");         //重启
 
-            //$data=$redis->hGet('update','f8d325e43655dc1b56ec88d1f7b87cf2');
+
+            if($info!=false){
+                if($info=='all'){           //重启所有路由
+                    $data=$redis->hVals('info');
+                    foreach($data as $router){
+                        $arr=json_decode($router,true);
+                        $serv->send($arr['fd'],encrypt(returnData($arr)));
+
+                        /*修改原状态*/
+                        $arr['deal_with']=1;
+                        $re=$redis->hSet('info',$arr['routeruuid'],json_encode($arr));
+                        //写入日志
+                        restartLog($router);
+
+                }
+                }else{
+                    foreach($info as $uuid){    //批量重启
+
+                        $router=$redis->hGet('info',$uuid);
+                        $arr=json_decode($router,true);
+                        $serv->send($arr['fd'],encrypt(returnData($arr)));
+
+                        /*修改原状态*/
+                        $arr['deal_with']=1;
+                        $re=$redis->hSet('info',$arr['routeruuid'],json_encode($arr));
+                        //写入日志
+                        restartLog($router);
+                    }
+                }
+            }
+
             //获取所有
-            $data=$redis->hVals('update');
-
+            $data=$redis->hVals('edit');      //修改
             if($data!=false){
                 foreach($data as $v){
-                    $fd=json_decode($v,true);
-                    $re=$serv->send($fd['fd'],encrypt($v));
-
+                    $edit_data=json_decode($v,true);
+                    $serv->send($edit_data['fd'],encrypt(returnData($edit_data)));
+/*
+                    /*修改原状态*/
+                    $edit_data['deal_with']=2;
+                    $redis->hSet('info',$edit_data['routeruuid'],json_encode($edit_data));
+                    var_dump($edit_data);
+                    //写入日志
+                    updateLog($v);
                 }
             }
             $redis->close();
         });
     }
+
+
 
     /*异步任务完成时候*/
     public  function onFinish($serv,$taskId,$data){
