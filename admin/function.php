@@ -37,21 +37,30 @@
         ]
 
     ];*/
-
+    use redis\redis;
 
 
 
     /*异常信息重启*/
     function restart($mes){
-        if($mes['poolsta']['fan']>4000)return true;
-        if($mes['poolsta']['pll']<500||$mes['poolsta']['pll']>700)return true;
-        if($mes['poolsta']['core'][0]=='close'||$mes['poolsta']['core'][1]=='close') return true;
-        if($mes['compute']['5s']==0||$mes['compute']['60s']==0||$mes['compute']['avg']==0)return true;
-        foreach($mes['poolsta']['temperature'] as $v){
-            if($v>80) return true;
+        $redis = Redis::instance();
+        $batch=$redis->hGet('ore_batch_route',$mes['routeruuid']);//路由批次
+        $temp_info=$redis->hGet('ore_batch',$batch); //路由批次信息
+        $info=json_decode($temp_info,true);
+
+        if($mes['poolsta']['fan']!=$info['poolsta']['fan']) return true;
+        if($mes['poolsta']['pll']!=$info['poolsta']['pll']) return true;
+        if($mes['poolsta']['core'][0]!=$info['poolsta']['core'][0]) return true;
+        if($mes['poolsta']['core'][1]!=['poolsta']['core'][1]) return true;
+        if($mes['compute']['5s']!=['compute']['5s']) return true;
+
+        foreach($mes['poolsta']['temperature'] as $k=>$v){
+            if($v!=$info['poolsta']['temperature'][$k]) return true;
         }
         return false;
     }
+
+
     /*aes加密*/
     function encrypt($data){
         //机密后字符串
@@ -107,7 +116,7 @@
     /*判断重启是否成功*/
     function restartStatus($old_data){
         if($old_data['deal_with']==1||$old_data['deal_with']==2){
-            if(time()-$old_data['last_unix_time']<15){
+            if(time()-$old_data['last_unix_time']<40){
                 return true;
             }
         }
