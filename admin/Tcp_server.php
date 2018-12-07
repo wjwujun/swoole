@@ -1,7 +1,6 @@
 <?php
 require_once "function.php";
-use Aes\Aes;
-use redis\redis;
+
 
 class Tcp{
 
@@ -18,7 +17,7 @@ class Tcp{
 
         //配置
         $this->tcp->set([
-            'worker_num'=>8,  //worker进程数，建议开启cpu的1-4倍
+            'worker_num'=>2,  //worker进程数，建议开启cpu的1-4倍
             'max_request'=>10000,  //每个进程处理的最大连接数
             'task_worker_num'=>1     //异步task的进程数
         ]);
@@ -36,12 +35,12 @@ class Tcp{
     }
 
     /*获取redis实列*/
-/*    public function getRedis(){
-        $redis = Redis::instance();
+    public function getRedis(){
+        $redis = new Redis();
         $redis->connect('122.225.58.118', 6379);
         $redis->auth('U#rNFRkk3vuCKcZ5');
         return  $redis;
-    }*/
+    }
 
     /*
      * 监听连接进入事件
@@ -52,7 +51,7 @@ class Tcp{
     {
 
         //获取ip,存入集合
-        $redis = Redis::instance();
+        $redis = $this->getRedis();
         $udp_client = $serv->connection_info($fd, $reactor_id);
         $redis->sAdd('ip',$udp_client['remote_ip']);
 
@@ -66,7 +65,7 @@ class Tcp{
      *$from_id就是 线程id，$reactor_id
      * */
     public function onReceive($serv, $fd, $from_id, $data) {
-        $redis = Redis::instance();
+        $redis = $this->getRedis();
         $mes=json_decode($data,true);
 
         $batch=$redis->hGet("ore_batch_route",$mes['routeruuid']);  //获取批次
@@ -74,25 +73,38 @@ class Tcp{
             $redis->hSet('ore_batch_route',$mes['routeruuid'],1);
         }
 
-        //查看路由是否和批次配置相同，不相同就重启
-        if(restart($mes)||$redis->sIsMember('ore_restart',$mes['routeruuid'])){
+        $batch=$redis->hGet('ore_batch_route',$mes['routeruuid']);//路由批次
+        $temp_info=$redis->hGet('ore_batch',$batch); //路由批次信息
+        $info=json_decode($temp_info,true);
+
+        var_dump(json_encode($info));
+        var_dump(json_encode($mes));
+
+        //查看路由是否和批次配置相同，不相同就重启,查看是否在重启批次表中
+        if(restart($mes,$info)||$redis->sIsMember('ore_restart',$mes['routeruuid'])){
+            var_dump('aaaaa');
+            var_dump(restart($mes,$info));
+            var_dump($redis->sIsMember('ore_restart',$mes['routeruuid']));
+
             $batch=$redis->hGet("ore_batch_route",$mes['routeruuid']);  //获取批次
             $batch_info=json_decode($redis->hGet("ore_batch",$batch),true);   //获取批次所对应的配置
             $batch_info['routeruuid']=$mes['routeruuid'];
             //aes加密
-            $aa=returnData($batch_info,0,1);
+            $aa=returnData($batch_info,1,0);
             $serv->send($fd,encrypt($aa));
         }
+        $redis->sRem('ore_restart',$mes['routeruuid']); //重启成功后删除
+
         //判断是否重启成功
         $old_data=json_decode($redis->hGet("ore_info",$mes['routeruuid']),true);
         if(isset($old_data)) {
+            var_dump('bbbbbb');
             if (restartStatus($old_data)) {
-                $aa = returnData($old_data, 0, 1);
+                var_dump('ccccc');
+                $aa = returnData($old_data, 1, 0);
                 $serv->send($fd, encrypt($aa));
             }
         }
-
-
         $mes['last_time']=date("Y-m-d H:i:s");
         $mes['last_unix_time']=time();
         $mes['fd']=$fd;
@@ -102,18 +114,13 @@ class Tcp{
         $redis->hSet('ore_info',$mes['routeruuid'],json_encode($mes)); //将详细信息存入haset
         $redis->close();
 
-
-
-
-
-
         //$serv->send($fd,$data);
     }
 
     //监听连接关闭事件
     public function onClose($serv, $fd) {
-        $redis = Redis::instance();
-        $redis->sRem('fd',$fd);
+        $redis = $this->getRedis();
+        $redis->sRem('ore_fd',$fd);
         $redis->close();
         echo "Client: Close {$fd}".PHP_EOL;
     }
@@ -123,16 +130,16 @@ class Tcp{
     /*work启动时候*/
     public function onWorkerStart($serv,$worker_id){
         // 只有当worker_id为0时才添加定时器,避免重复添加
-        if( $worker_id == 0 ) {
-            $str="异步任务开始执行时间".date("Y-m-d H:i:s");
-            $serv->task($str);
-        }
+        /* if( $worker_id == 0 ) {
+             $str="异步任务开始执行时间".date("Y-m-d H:i:s");
+             $serv->task($str);
+         }*/
     }
 
     /*异步任务*/
     public  function onTask($serv,$taskId,$workerId,$data){
         swoole_timer_tick(10000,function()use($serv,$taskId){
-            $redis = Redis::instance();
+            $redis = $this->getRedis();
             $info=$redis->sMembers("ore_restart");         //重启
 
 
@@ -141,7 +148,7 @@ class Tcp{
                     $data=$redis->hVals('ore_info');
                     foreach($data as $router){
                         $arr=json_decode($router,true);
-                        $serv->send($arr['fd'],encrypt(returnData($arr,0,1)));
+                        $serv->send($arr['fd'],encrypt(returnData($arr,1,0)));
 
                         /*修改原状态*/
                         $arr['deal_with']=1;
@@ -156,7 +163,7 @@ class Tcp{
 
                         $router=$redis->hGet('ore_info',$uuid);
                         $arr=json_decode($router,true);
-                        $serv->send($arr['fd'],encrypt(returnData($arr,0,1)));
+                        $serv->send($arr['fd'],encrypt(returnData($arr,1,0)));
 
                         /*修改原状态*/
                         $arr['deal_with']=1;
