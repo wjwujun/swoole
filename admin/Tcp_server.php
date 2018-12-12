@@ -67,51 +67,62 @@ class Tcp{
     public function onReceive($serv, $fd, $from_id, $data) {
         $redis = $this->getRedis();
         $mes=json_decode($data,true);
-
+        if($mes==null){
+            $serv->close($fd);
+        }
         $batch=$redis->hGet("ore_batch_route",$mes['routeruuid']);  //获取批次
-        if(empty($batch)){     //如果没有批次表,默认加入1号批次
+        if(empty($batch)&&$mes['routeruuid']!=null){     //如果没有批次表,并且批次uuid存在,默认加入1号批次
             $redis->hSet('ore_batch_route',$mes['routeruuid'],1);
         }
 
         $batch=$redis->hGet('ore_batch_route',$mes['routeruuid']);//路由批次
-        $temp_info=$redis->hGet('ore_batch',$batch); //路由批次信息
-        $info=json_decode($temp_info,true);
+        $temp_info=$redis->hGet('ore_batch',$batch); //查看路由批次信息是否存在，如果不存在默认为1号路由批次
+        if($temp_info==null){
+            $redis->hSet('ore_batch_route',$mes['routeruuid'],1);
+            $temp_info=$redis->hGet('ore_batch',1);
+            $info=json_decode($temp_info,true);
+        }else{
+            $info=json_decode($temp_info,true);
+        }
 
-        var_dump(json_encode($info));
-        var_dump(json_encode($mes));
+        var_dump(date("Y-m-d H:i:s"));
+        var_dump($mes['routeruuid']);
+        var_dump($mes);
 
         //查看路由是否和批次配置相同，不相同就重启,查看是否在重启批次表中
-        if(restart($mes,$info)||$redis->sIsMember('ore_restart',$mes['routeruuid'])){
-            var_dump('aaaaa');
-            var_dump(restart($mes,$info));
-            var_dump($redis->sIsMember('ore_restart',$mes['routeruuid']));
+        if (restart($mes, $info) || $redis->sIsMember('ore_restart', $mes['routeruuid'])) {
 
-            $batch=$redis->hGet("ore_batch_route",$mes['routeruuid']);  //获取批次
-            $batch_info=json_decode($redis->hGet("ore_batch",$batch),true);   //获取批次所对应的配置
-            $batch_info['routeruuid']=$mes['routeruuid'];
+            //var_dump($redis->sIsMember('ore_restart',$mes['routeruuid']));
+
+            $batch = $redis->hGet("ore_batch_route", $mes['routeruuid']);  //获取批次
+            $batch_info = json_decode($redis->hGet("ore_batch", $batch), true);   //获取批次所对应的配置
+            $batch_info['routeruuid'] = $mes['routeruuid'];
+            var_dump('----------------------------------');
+            var_dump($batch_info);
             //aes加密
-            $aa=returnData($batch_info,1,0);
-            $serv->send($fd,encrypt($aa));
+            $aa = returnData($batch_info, 1, 0);
+            $serv->send($fd, encrypt($aa));
         }
-        $redis->sRem('ore_restart',$mes['routeruuid']); //重启成功后删除
+        $redis->sRem('ore_restart', $mes['routeruuid']); //重启成功后删除
 
         //判断是否重启成功
-        $old_data=json_decode($redis->hGet("ore_info",$mes['routeruuid']),true);
-        if(isset($old_data)) {
-            var_dump('bbbbbb');
+        $old_data = json_decode($redis->hGet("ore_info", $mes['routeruuid']), true);
+        if (isset($old_data)) {
             if (restartStatus($old_data)) {
-                var_dump('ccccc');
                 $aa = returnData($old_data, 1, 0);
+                var_dump('*****************************************');
+                var_dump($aa);
                 $serv->send($fd, encrypt($aa));
             }
         }
-        $mes['last_time']=date("Y-m-d H:i:s");
-        $mes['last_unix_time']=time();
-        $mes['fd']=$fd;
-        $mes['deal_with']=0;
+        $mes['last_time'] = date("Y-m-d H:i:s");
+        $mes['last_unix_time'] = time();
+        $mes['fd'] = $fd;
+        $mes['deal_with'] = 0;
         //将路由器的传入的数据存入redis。
-        $redis->zAdd('ore_fd',time(),$mes['routeruuid']);  //获取请求fd存入有序集合
-        $redis->hSet('ore_info',$mes['routeruuid'],json_encode($mes)); //将详细信息存入haset
+
+        $redis->zAdd('ore_fd', time(), $mes['routeruuid']);  //获取请求fd存入有序集合
+        $redis->hSet('ore_info', $mes['routeruuid'], json_encode($mes)); //将详细信息存入haset
         $redis->close();
 
         //$serv->send($fd,$data);
