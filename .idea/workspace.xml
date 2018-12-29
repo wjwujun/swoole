@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8c99f413-f8da-46eb-9b17-bb02edeb2b54" name="Default" comment="" />
+    <list default="true" id="8c99f413-f8da-46eb-9b17-bb02edeb2b54" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admin/sqlserver.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/Redis.php" afterPath="$PROJECT_DIR$/admin/Redis.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/Tcp_server.php" afterPath="$PROJECT_DIR$/admin/Tcp_server.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/function.php" afterPath="$PROJECT_DIR$/admin/function.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web_tcp_client.php" afterPath="$PROJECT_DIR$/web_tcp_client.php" />
+    </list>
     <ignored path="swoole.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -21,56 +28,77 @@
     <favorites_list name="swoole" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="io_read.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/io_read.php">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="Tcp_server.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/admin/Tcp_server.php">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-5.2">
-              <caret line="15" column="18" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
+              <caret line="84" column="24" selection-start-line="84" selection-start-column="24" selection-end-line="84" selection-end-column="24" />
               <folding>
-                <element signature="e#11#220#0#PHP" expanded="true" />
+                <element signature="e#1864#1937#0#PHP" expanded="false" />
+                <element signature="e#2476#2538#0#PHP" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="io_write.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/io_write.php">
+      <file leaf-file-name="sqlserver.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/admin/sqlserver.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.6857142">
-              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.69148934">
+              <caret line="25" column="12" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="12" />
               <folding>
-                <element signature="e#11#161#0#PHP" expanded="true" />
+                <marker date="1545979476350" expanded="true" signature="660:673" placeholder="SELECT * FRO... " />
+                <marker date="1545979476350" expanded="true" signature="660:674" placeholder="SELECT * FRO... UP_Batch" />
+                <marker date="1545979476350" expanded="true" signature="660:689" placeholder="SELECT * FRO... ${$table}" />
+                <marker date="1545979476350" expanded="true" signature="660:690" placeholder="SELECT * FRO... ${$table}" />
+                <marker date="1545979476350" expanded="true" signature="660:696" placeholder="SELECT * FRO... UP_Batch" />
+                <marker date="1545979476350" expanded="true" signature="660:698" placeholder="SELECT * FRO... UP_Batch" />
+                <marker date="1545979476350" expanded="true" signature="660:700" placeholder="SELECT * FRO... ${$table}" />
+                <marker date="1545979476350" expanded="true" signature="660:842" placeholder="SELECT * FRO... " />
+                <marker date="1545979476350" expanded="true" signature="867:898" placeholder="SELECT * FRO... ${$table}" />
+                <marker date="1545979476350" expanded="true" signature="867:1348" placeholder="SELECT * FRO... " />
+                <marker date="1545979476350" expanded="true" signature="929:943" placeholder="SELECT * FRO... ${$table}" />
+                <marker date="1545979476350" expanded="true" signature="929:955" placeholder="SELECT * FRO... UP_Batch" />
+                <marker date="1545979476350" expanded="true" signature="1070:1130" placeholder="insert into UP_Batch" />
+                <marker date="1545979476350" expanded="true" signature="1253:1298" placeholder="update dbo.U... " />
+                <marker date="1545979476350" expanded="true" signature="1419:1449" placeholder="delete from " />
+                <marker date="1545979476350" expanded="true" signature="1419:1457" placeholder="delete from " />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mysql.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mysql.php">
+      <file leaf-file-name="function.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/admin/function.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.6285715">
-              <caret line="37" column="49" selection-start-line="37" selection-start-column="49" selection-end-line="37" selection-end-column="49" />
+            <state vertical-scroll-proportion="-4.457143">
+              <caret line="64" column="14" selection-start-line="64" selection-start-column="14" selection-end-line="64" selection-end-column="14" />
               <folding>
-                <element signature="e#1336#1792#0#PHP" expanded="false" />
-                <marker date="1542096976826" expanded="true" signature="869:914" placeholder="update aa se... " />
-                <marker date="1542096976826" expanded="true" signature="875:914" placeholder="select * fro... aa" />
+                <element signature="n#restart#0;n#!!top" expanded="false" />
+                <element signature="n#encrypt#0;n#!!top" expanded="false" />
+                <element signature="n#decrypt#0;n#!!top" expanded="false" />
+                <element signature="n#returnData#0;n#!!top" expanded="false" />
+                <element signature="n#restartStatus#0;n#!!top" expanded="false" />
+                <element signature="n#updateStatus#0;n#!!top" expanded="false" />
+                <element signature="n#restartLog#0;n#!!top" expanded="false" />
+                <element signature="n#updateLog#0;n#!!top" expanded="false" />
+                <marker date="1544595093557" expanded="true" signature="2238:2264" placeholder="SELECT * FRO... UP_Batch" />
+                <marker date="1544595093557" expanded="true" signature="2300:2347" placeholder="insert into UP_Batch" />
+                <marker date="1544595093557" expanded="true" signature="2300:2363" placeholder="insert into UP_Batch" />
+                <marker date="1544595093557" expanded="true" signature="2311:2325" placeholder="SELECT * FRO... UP_Batch" />
+                <marker date="1544595093557" expanded="true" signature="2402:2445" placeholder="update dbo.U... " />
+                <marker date="1544595093557" expanded="true" signature="2433:2434" placeholder="insert into UP_Batch" />
+                <marker date="1544595093557" expanded="true" signature="2481:2518" placeholder="delete from " />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="redis.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/redis.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.640884">
-              <caret line="10" column="12" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
-              <folding />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -79,7 +107,6 @@
         <option value="$PROJECT_DIR$/http_server.php" />
         <option value="$PROJECT_DIR$/web_http_server.php" />
         <option value="$PROJECT_DIR$/web_socket_server.php" />
-        <option value="$PROJECT_DIR$/web_tcp_client.php" />
         <option value="$PROJECT_DIR$/web_tcp_server.php" />
         <option value="$PROJECT_DIR$/inde.html" />
         <option value="$PROJECT_DIR$/web_task.php" />
@@ -87,6 +114,24 @@
         <option value="$PROJECT_DIR$/io_write.php" />
         <option value="$PROJECT_DIR$/mysql.php" />
         <option value="$PROJECT_DIR$/redis.php" />
+        <option value="$PROJECT_DIR$/memory/table.php" />
+        <option value="$PROJECT_DIR$/route/WS_INIT_DB2_M.php" />
+        <option value="$PROJECT_DIR$/admin/Index.php" />
+        <option value="$PROJECT_DIR$/admin/Mysql.php" />
+        <option value="$PROJECT_DIR$/admin/inde.html" />
+        <option value="$PROJECT_DIR$/admin/web_socket_server.php" />
+        <option value="$PROJECT_DIR$/admin/MyRedis.php" />
+        <option value="$PROJECT_DIR$/admin/Predis.php" />
+        <option value="$PROJECT_DIR$/admin/jwt.php" />
+        <option value="$PROJECT_DIR$/admin/mysql.php" />
+        <option value="$PROJECT_DIR$/admin/aes.php" />
+        <option value="$PROJECT_DIR$/web_tcp_client.php" />
+        <option value="$PROJECT_DIR$/admin/Socket_server.php" />
+        <option value="$PROJECT_DIR$/admin/function.php" />
+        <option value="$PROJECT_DIR$/admin/Redis.php" />
+        <option value="$PROJECT_DIR$/admin/SqlServer.php" />
+        <option value="$PROJECT_DIR$/admin/sqlserver.php" />
+        <option value="$PROJECT_DIR$/admin/Tcp_server.php" />
       </list>
     </option>
   </component>
@@ -112,7 +157,7 @@
     <OptionsSetting value="true" id="Update" />
     <OptionsSetting value="true" id="Status" />
     <OptionsSetting value="true" id="Edit" />
-    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="2" id="Add" />
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectView">
@@ -150,20 +195,37 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="swoole" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="swoole" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="E:/web/webAdmin" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js-jscs-nodeInterpreter" value="D:\node\node.exe" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\phpStudy\PHPTutorial\WWW\swoole\route" />
       <recent name="E:\phpStudy\PHPTutorial\WWW\swoole" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\phpStudy\PHPTutorial\WWW\swoole\admin" />
+      <recent name="E:\phpStudy\PHPTutorial\WWW\swoole\route" />
       <recent name="E:\phpStudy\PHPTutorial\WWW\swoole" />
     </key>
   </component>
@@ -183,6 +245,11 @@
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.npm" factoryName="npm">
@@ -215,25 +282,25 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="2" width="1378" height="733" extended-state="0" />
+    <frame x="-7" y="2" width="1378" height="733" extended-state="1" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962063" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1828528" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5030349" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5030349" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26666668" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42096505" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962063" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.4969651" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.327787" sideWeight="0.4969651" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3294509" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
@@ -250,55 +317,331 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="7" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web_http_server.php">
+    <entry file="file://$PROJECT_DIR$/mysql.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.171429">
-          <caret line="26" column="43" selection-start-line="26" selection-start-column="43" selection-end-line="26" selection-end-column="43" />
-          <folding />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="9" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web_socket_server.php">
+    <entry file="file://$PROJECT_DIR$/admin/aes.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.028571">
-          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="14" />
-          <folding />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="70" column="30" selection-start-line="70" selection-start-column="15" selection-end-line="70" selection-end-column="30" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web_tcp_server.php">
+    <entry file="file://$PROJECT_DIR$/admin/Tcp_server.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.6857142">
-          <caret line="27" column="28" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
-          <folding />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="32" column="28" selection-start-line="32" selection-start-column="28" selection-end-line="32" selection-end-column="28" />
+          <folding>
+            <element signature="e#1864#1937#0#PHP" expanded="false" />
+            <element signature="e#2476#2538#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/function.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#restart#0;n#!!top" expanded="false" />
+            <element signature="n#encrypt#0;n#!!top" expanded="false" />
+            <element signature="n#decrypt#0;n#!!top" expanded="false" />
+            <element signature="n#returnData#0;n#!!top" expanded="false" />
+            <element signature="n#restartStatus#0;n#!!top" expanded="false" />
+            <element signature="n#updateStatus#0;n#!!top" expanded="false" />
+            <element signature="n#restartLog#0;n#!!top" expanded="false" />
+            <element signature="n#updateLog#0;n#!!top" expanded="false" />
+            <marker date="1544595093557" expanded="true" signature="2238:2264" placeholder="SELECT * FRO... UP_Batch" />
+            <marker date="1544595093557" expanded="true" signature="2300:2347" placeholder="insert into UP_Batch" />
+            <marker date="1544595093557" expanded="true" signature="2300:2363" placeholder="insert into UP_Batch" />
+            <marker date="1544595093557" expanded="true" signature="2311:2325" placeholder="SELECT * FRO... UP_Batch" />
+            <marker date="1544595093557" expanded="true" signature="2402:2445" placeholder="update dbo.U... " />
+            <marker date="1544595093557" expanded="true" signature="2433:2434" placeholder="insert into UP_Batch" />
+            <marker date="1544595093557" expanded="true" signature="2481:2518" placeholder="delete from " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/Redis.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mysql.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="9" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/aes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="70" column="30" selection-start-line="70" selection-start-column="15" selection-end-line="70" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/Tcp_server.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="80" column="36" selection-start-line="80" selection-start-column="36" selection-end-line="80" selection-end-column="36" />
+          <folding>
+            <element signature="e#1864#1937#0#PHP" expanded="false" />
+            <element signature="e#2476#2538#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/function.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#restart#0;n#!!top" expanded="false" />
+            <element signature="n#encrypt#0;n#!!top" expanded="false" />
+            <element signature="n#decrypt#0;n#!!top" expanded="false" />
+            <element signature="n#returnData#0;n#!!top" expanded="false" />
+            <element signature="n#restartStatus#0;n#!!top" expanded="false" />
+            <element signature="n#updateStatus#0;n#!!top" expanded="false" />
+            <element signature="n#restartLog#0;n#!!top" expanded="false" />
+            <element signature="n#updateLog#0;n#!!top" expanded="false" />
+            <marker date="1544595093557" expanded="true" signature="2238:2264" placeholder="SELECT * FRO... UP_Batch" />
+            <marker date="1544595093557" expanded="true" signature="2300:2347" placeholder="insert into UP_Batch" />
+            <marker date="1544595093557" expanded="true" signature="2300:2363" placeholder="insert into UP_Batch" />
+            <marker date="1544595093557" expanded="true" signature="2311:2325" placeholder="SELECT * FRO... UP_Batch" />
+            <marker date="1544595093557" expanded="true" signature="2402:2445" placeholder="update dbo.U... " />
+            <marker date="1544595093557" expanded="true" signature="2433:2434" placeholder="insert into UP_Batch" />
+            <marker date="1544595093557" expanded="true" signature="2481:2518" placeholder="delete from " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/Redis.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mysql.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="9" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/aes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="70" column="30" selection-start-line="70" selection-start-column="15" selection-end-line="70" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/Tcp_server.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="38" column="48" selection-start-line="38" selection-start-column="48" selection-end-line="38" selection-end-column="48" />
+          <folding>
+            <element signature="e#1864#1937#0#PHP" expanded="false" />
+            <element signature="e#2476#2538#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/function.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#restart#0;n#!!top" expanded="false" />
+            <element signature="n#encrypt#0;n#!!top" expanded="false" />
+            <element signature="n#decrypt#0;n#!!top" expanded="false" />
+            <element signature="n#returnData#0;n#!!top" expanded="false" />
+            <element signature="n#restartStatus#0;n#!!top" expanded="false" />
+            <element signature="n#updateStatus#0;n#!!top" expanded="false" />
+            <element signature="n#restartLog#0;n#!!top" expanded="false" />
+            <element signature="n#updateLog#0;n#!!top" expanded="false" />
+            <marker date="1544595093557" expanded="true" signature="2238:2264" placeholder="SELECT * FRO... UP_Batch" />
+            <marker date="1544595093557" expanded="true" signature="2300:2347" placeholder="insert into UP_Batch" />
+            <marker date="1544595093557" expanded="true" signature="2300:2363" placeholder="insert into UP_Batch" />
+            <marker date="1544595093557" expanded="true" signature="2311:2325" placeholder="SELECT * FRO... UP_Batch" />
+            <marker date="1544595093557" expanded="true" signature="2402:2445" placeholder="update dbo.U... " />
+            <marker date="1544595093557" expanded="true" signature="2433:2434" placeholder="insert into UP_Batch" />
+            <marker date="1544595093557" expanded="true" signature="2481:2518" placeholder="delete from " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mysql.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="9" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/aes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="70" column="30" selection-start-line="70" selection-start-column="15" selection-end-line="70" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/Tcp_server.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#1864#1937#0#PHP" expanded="false" />
+            <element signature="e#2476#2538#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/function.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="108" column="54" selection-start-line="108" selection-start-column="54" selection-end-line="108" selection-end-column="54" />
+          <folding>
+            <element signature="n#restart#0;n#!!top" expanded="false" />
+            <element signature="n#encrypt#0;n#!!top" expanded="false" />
+            <element signature="n#decrypt#0;n#!!top" expanded="false" />
+            <element signature="n#returnData#0;n#!!top" expanded="false" />
+            <element signature="n#restartStatus#0;n#!!top" expanded="false" />
+            <element signature="n#updateStatus#0;n#!!top" expanded="false" />
+            <element signature="n#restartLog#0;n#!!top" expanded="false" />
+            <element signature="n#updateLog#0;n#!!top" expanded="false" />
+            <marker date="1544595093557" expanded="true" signature="2238:2264" placeholder="SELECT * FRO... UP_Batch" />
+            <marker date="1544595093557" expanded="true" signature="2300:2347" placeholder="insert into UP_Batch" />
+            <marker date="1544595093557" expanded="true" signature="2300:2363" placeholder="insert into UP_Batch" />
+            <marker date="1544595093557" expanded="true" signature="2311:2325" placeholder="SELECT * FRO... UP_Batch" />
+            <marker date="1544595093557" expanded="true" signature="2402:2445" placeholder="update dbo.U... " />
+            <marker date="1544595093557" expanded="true" signature="2433:2434" placeholder="insert into UP_Batch" />
+            <marker date="1544595093557" expanded="true" signature="2481:2518" placeholder="delete from " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/Tcp_server.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#1864#1937#0#PHP" expanded="false" />
+            <element signature="e#2476#2538#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/Socket_server.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/function.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="49" column="17" selection-start-line="49" selection-start-column="17" selection-end-line="49" selection-end-column="17" />
+          <folding>
+            <element signature="n#restart#0;n#!!top" expanded="false" />
+            <element signature="n#encrypt#0;n#!!top" expanded="false" />
+            <element signature="n#decrypt#0;n#!!top" expanded="false" />
+            <element signature="n#returnData#0;n#!!top" expanded="false" />
+            <element signature="n#restartStatus#0;n#!!top" expanded="false" />
+            <element signature="n#updateStatus#0;n#!!top" expanded="false" />
+            <element signature="n#restartLog#0;n#!!top" expanded="false" />
+            <element signature="n#updateLog#0;n#!!top" expanded="false" />
+            <marker date="1544595093557" expanded="true" signature="2238:2264" placeholder="SELECT * FRO... UP_Batch" />
+            <marker date="1544595093557" expanded="true" signature="2300:2347" placeholder="insert into UP_Batch" />
+            <marker date="1544595093557" expanded="true" signature="2300:2363" placeholder="insert into UP_Batch" />
+            <marker date="1544595093557" expanded="true" signature="2311:2325" placeholder="SELECT * FRO... UP_Batch" />
+            <marker date="1544595093557" expanded="true" signature="2402:2445" placeholder="update dbo.U... " />
+            <marker date="1544595093557" expanded="true" signature="2433:2434" placeholder="insert into UP_Batch" />
+            <marker date="1544595093557" expanded="true" signature="2481:2518" placeholder="delete from " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/Tcp_server.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="63" column="9" selection-start-line="63" selection-start-column="9" selection-end-line="63" selection-end-column="9" />
+          <folding>
+            <element signature="e#1864#1937#0#PHP" expanded="false" />
+            <element signature="e#2476#2538#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/Socket_server.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/function.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="59" column="24" selection-start-line="59" selection-start-column="24" selection-end-line="59" selection-end-column="24" />
+          <folding>
+            <element signature="n#restart#0;n#!!top" expanded="false" />
+            <element signature="n#encrypt#0;n#!!top" expanded="false" />
+            <element signature="n#decrypt#0;n#!!top" expanded="false" />
+            <element signature="n#returnData#0;n#!!top" expanded="false" />
+            <element signature="n#restartStatus#0;n#!!top" expanded="false" />
+            <element signature="n#updateStatus#0;n#!!top" expanded="false" />
+            <element signature="n#restartLog#0;n#!!top" expanded="false" />
+            <element signature="n#updateLog#0;n#!!top" expanded="false" />
+            <marker date="1544595093557" expanded="true" signature="2238:2264" placeholder="SELECT * FRO... UP_Batch" />
+            <marker date="1544595093557" expanded="true" signature="2300:2347" placeholder="insert into UP_Batch" />
+            <marker date="1544595093557" expanded="true" signature="2300:2363" placeholder="insert into UP_Batch" />
+            <marker date="1544595093557" expanded="true" signature="2311:2325" placeholder="SELECT * FRO... UP_Batch" />
+            <marker date="1544595093557" expanded="true" signature="2402:2445" placeholder="update dbo.U... " />
+            <marker date="1544595093557" expanded="true" signature="2433:2434" placeholder="insert into UP_Batch" />
+            <marker date="1544595093557" expanded="true" signature="2481:2518" placeholder="delete from " />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web_tcp_client.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-19.314285">
-          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="59" column="14" selection-start-line="23" selection-start-column="5" selection-end-line="59" selection-end-column="14" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/inde.html">
+    <entry file="file://$PROJECT_DIR$/route/WS_INIT_DB2_M.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.428571">
-          <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
-          <folding />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web_task.php">
+    <entry file="file://$PROJECT_DIR$/web_socket_server.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26666668">
-          <caret line="4" column="21" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
-          <folding />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="40" column="1" selection-start-line="40" selection-start-column="1" selection-end-line="40" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web_http_server.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.171429">
+          <caret line="26" column="43" selection-start-line="26" selection-start-column="43" selection-end-line="26" selection-end-column="43" />
         </state>
       </provider>
     </entry>
@@ -306,9 +649,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.2">
           <caret line="15" column="18" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
-          <folding>
-            <element signature="e#11#220#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -316,29 +656,194 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-6.6857142">
           <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding>
-            <element signature="e#11#161#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mysql.php">
+    <entry file="file://$PROJECT_DIR$/memory/table.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.6285715">
-          <caret line="37" column="49" selection-start-line="37" selection-start-column="49" selection-end-line="37" selection-end-column="49" />
-          <folding>
-            <element signature="e#1336#1792#0#PHP" expanded="false" />
-            <marker date="1542096976826" expanded="true" signature="869:914" placeholder="update aa se... " />
-            <marker date="1542096976826" expanded="true" signature="875:914" placeholder="select * fro... aa" />
-          </folding>
+        <state vertical-scroll-proportion="-5.142857">
+          <caret line="22" column="31" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/route/Function.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="34.914288">
+          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inde.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33891994">
+          <caret line="7" column="18" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/route/WS_INIT_DB2_M.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.914286">
+          <caret line="1163" column="0" selection-start-line="1163" selection-start-column="0" selection-end-line="1163" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/com/jetbrains/php/lang/psi/stubs/data/Redis.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.2285714">
+          <caret line="1044" column="20" selection-start-line="1044" selection-start-column="20" selection-end-line="1044" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web_socket_server.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-23.77143">
+          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web_task.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.9428573">
+          <caret line="50" column="10" selection-start-line="50" selection-start-column="10" selection-end-line="50" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web_tcp_server.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.31707317">
+          <caret line="60" column="24" selection-start-line="60" selection-start-column="24" selection-end-line="60" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/route/MyRedis.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.65110564">
+          <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/redis.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.640884">
-          <caret line="10" column="12" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
+        <state vertical-scroll-proportion="1.1498772">
+          <caret line="18" column="34" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/com/jetbrains/php/lang/psi/stubs/data/mysqli.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3544776">
+          <caret line="1577" column="9" selection-start-line="1577" selection-start-column="9" selection-end-line="1577" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/inde.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.048507463">
+          <caret line="12" column="29" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/com/jetbrains/php/lang/psi/stubs/data/openssl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5">
+          <caret line="659" column="7" selection-start-line="659" selection-start-column="7" selection-end-line="659" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web_tcp_client.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.048507463">
+          <caret line="59" column="14" selection-start-line="23" selection-start-column="5" selection-end-line="59" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/Socket_server.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.2285714">
+          <caret line="43" column="9" selection-start-line="43" selection-start-column="9" selection-end-line="43" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mysql.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="9" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/aes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.6285715">
+          <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/Redis.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.27238807">
+          <caret line="13" column="7" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/function.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.457143">
+          <caret line="64" column="14" selection-start-line="64" selection-start-column="14" selection-end-line="64" selection-end-column="14" />
+          <folding>
+            <element signature="n#restart#0;n#!!top" expanded="false" />
+            <element signature="n#encrypt#0;n#!!top" expanded="false" />
+            <element signature="n#decrypt#0;n#!!top" expanded="false" />
+            <element signature="n#returnData#0;n#!!top" expanded="false" />
+            <element signature="n#restartStatus#0;n#!!top" expanded="false" />
+            <element signature="n#updateStatus#0;n#!!top" expanded="false" />
+            <element signature="n#restartLog#0;n#!!top" expanded="false" />
+            <element signature="n#updateLog#0;n#!!top" expanded="false" />
+            <marker date="1544595093557" expanded="true" signature="2238:2264" placeholder="SELECT * FRO... UP_Batch" />
+            <marker date="1544595093557" expanded="true" signature="2300:2347" placeholder="insert into UP_Batch" />
+            <marker date="1544595093557" expanded="true" signature="2300:2363" placeholder="insert into UP_Batch" />
+            <marker date="1544595093557" expanded="true" signature="2311:2325" placeholder="SELECT * FRO... UP_Batch" />
+            <marker date="1544595093557" expanded="true" signature="2402:2445" placeholder="update dbo.U... " />
+            <marker date="1544595093557" expanded="true" signature="2433:2434" placeholder="insert into UP_Batch" />
+            <marker date="1544595093557" expanded="true" signature="2481:2518" placeholder="delete from " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/Tcp_server.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.2">
+          <caret line="84" column="24" selection-start-line="84" selection-start-column="24" selection-end-line="84" selection-end-column="24" />
+          <folding>
+            <element signature="e#1864#1937#0#PHP" expanded="false" />
+            <element signature="e#2476#2538#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/sqlserver.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.69148934">
+          <caret line="25" column="12" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="12" />
+          <folding>
+            <marker date="1545979476350" expanded="true" signature="660:673" placeholder="SELECT * FRO... " />
+            <marker date="1545979476350" expanded="true" signature="660:674" placeholder="SELECT * FRO... UP_Batch" />
+            <marker date="1545979476350" expanded="true" signature="660:689" placeholder="SELECT * FRO... ${$table}" />
+            <marker date="1545979476350" expanded="true" signature="660:690" placeholder="SELECT * FRO... ${$table}" />
+            <marker date="1545979476350" expanded="true" signature="660:696" placeholder="SELECT * FRO... UP_Batch" />
+            <marker date="1545979476350" expanded="true" signature="660:698" placeholder="SELECT * FRO... UP_Batch" />
+            <marker date="1545979476350" expanded="true" signature="660:700" placeholder="SELECT * FRO... ${$table}" />
+            <marker date="1545979476350" expanded="true" signature="660:842" placeholder="SELECT * FRO... " />
+            <marker date="1545979476350" expanded="true" signature="867:898" placeholder="SELECT * FRO... ${$table}" />
+            <marker date="1545979476350" expanded="true" signature="867:1348" placeholder="SELECT * FRO... " />
+            <marker date="1545979476350" expanded="true" signature="929:943" placeholder="SELECT * FRO... ${$table}" />
+            <marker date="1545979476350" expanded="true" signature="929:955" placeholder="SELECT * FRO... UP_Batch" />
+            <marker date="1545979476350" expanded="true" signature="1070:1130" placeholder="insert into UP_Batch" />
+            <marker date="1545979476350" expanded="true" signature="1253:1298" placeholder="update dbo.U... " />
+            <marker date="1545979476350" expanded="true" signature="1419:1449" placeholder="delete from " />
+            <marker date="1545979476350" expanded="true" signature="1419:1457" placeholder="delete from " />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -62,10 +62,17 @@
         // 生成pdo对象
         $objDB = new PDO($strDsn, $strDbUser, $strDbPass);
         //SYS_URLMac 路由表
-        //UP_Batch   批次
-        foreach ($objDB->query('SELECT * FROM dbo.UP_Batch') as $row) {
-            var_dump($row);
-        }
+        //查询数据
+        $select_sql='SELECT * FROM dbo.UP_Batch';
+        //添加数据
+        $add_sql='insert into  dbo.UP_Batch (id,userName,sex,age) values(1,2,3,4)';
+        //修改数据
+        $update_sql='update dbo.UP_Batch set age=18  where id =1';
+        //删除数据
+        $del_sql='delete from  dbo.UP_Batch where id =1';
+
+        $objDB->query($add_sql);
+
     }
 
 

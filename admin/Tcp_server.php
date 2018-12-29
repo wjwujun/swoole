@@ -1,5 +1,7 @@
 <?php
 require_once "function.php";
+require_once "SqlServer.php";
+require_once "Redis.php";
 
 
 class Tcp{
@@ -7,19 +9,21 @@ class Tcp{
 
     CONST HOST="0.0.0.0";
     CONST PORT=10084;
-
+    private  $redis=null;
     public $tcp=null;
     public  function __construct()
     {
 
         //创建Server对象，监听 127.0.0.1:9501端口
         $this->tcp = new swoole_server(self::HOST,self::PORT);
-
+        $this->redis=new Redis();
         //配置
         $this->tcp->set([
             'worker_num'=>2,  //worker进程数，建议开启cpu的1-4倍
             'max_request'=>10000,  //每个进程处理的最大连接数
-            'task_worker_num'=>1     //异步task的进程数
+            'task_worker_num'=>1,     //异步task的进程数
+            'task_max_request'=>100,   //每个task处理的数量
+            'log_file' => __DIR__ . '/server.log',  //日志打印
         ]);
 
         $this->tcp->on('connect',[$this,'onConnect']);
@@ -40,7 +44,26 @@ class Tcp{
         $redis->connect('122.225.58.118', 6379);
         $redis->auth('U#rNFRkk3vuCKcZ5');
         return  $redis;
+
     }
+    /*获取数据库连接实列*/
+    function getMysql(){
+        // 数据库服务器地址
+        $strDbHost = '122.225.58.124';
+        // 数据库用户
+        $strDbUser = 'sa';
+        // 数据库密码
+        $strDbPass = 'AUX_gehua@123P@ssw0rd2017';
+        // 数据库名称
+        $strDbName = 'RouterApp';
+        // 连接数据库的字符串定义
+        $strDsn = "sqlsrv:Server=$strDbHost;Database=$strDbName;";
+        // 生成pdo对象
+        $objDB = new PDO($strDsn, $strDbUser, $strDbPass);
+        return $objDB;
+    }
+
+
 
     /*
      * 监听连接进入事件
@@ -51,9 +74,17 @@ class Tcp{
     {
 
         //获取ip,存入集合
-        $redis = $this->getRedis();
+      /*  $redis = $this->getRedis();
         $udp_client = $serv->connection_info($fd, $reactor_id);
-        $redis->sAdd('ip',$udp_client['remote_ip']);
+        $redis->sAdd('ip',$udp_client['remote_ip']);*/
+
+        $sql=new SqlServer();
+        //$aa=$sql->select('','');
+        $bb=$sql->find('','');
+
+        //var_dump($aa);
+        var_dump("################################################");
+        var_dump($bb);
 
         echo "TCP  Client_id:{$fd}  threed_id:{$reactor_id}".PHP_EOL;
     }
@@ -85,9 +116,9 @@ class Tcp{
             $info=json_decode($temp_info,true);
         }
 
-        var_dump(date("Y-m-d H:i:s"));
+       /* var_dump(date("Y-m-d H:i:s"));
         var_dump($mes['routeruuid']);
-        var_dump($mes);
+        var_dump($mes);*/
 
         //查看路由是否和批次配置相同，不相同就重启,查看是否在重启批次表中
         if (restart($mes, $info) || $redis->sIsMember('ore_restart', $mes['routeruuid'])) {
@@ -97,8 +128,8 @@ class Tcp{
             $batch = $redis->hGet("ore_batch_route", $mes['routeruuid']);  //获取批次
             $batch_info = json_decode($redis->hGet("ore_batch", $batch), true);   //获取批次所对应的配置
             $batch_info['routeruuid'] = $mes['routeruuid'];
-            var_dump('----------------------------------');
-            var_dump($batch_info);
+           /* var_dump('----------------------------------');
+            var_dump($batch_info);*/
             //aes加密
             $aa = returnData($batch_info, 1, 0);
             $serv->send($fd, encrypt($aa));
@@ -110,8 +141,8 @@ class Tcp{
         if (isset($old_data)) {
             if (restartStatus($old_data)) {
                 $aa = returnData($old_data, 1, 0);
-                var_dump('*****************************************');
-                var_dump($aa);
+             /*   var_dump('*****************************************');
+                var_dump($aa);*/
                 $serv->send($fd, encrypt($aa));
             }
         }
